@@ -549,7 +549,7 @@
          "name":"roofOfficeOverlay",
          "opacity":0.75,
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":74,
          "x":0,
          "y":0
@@ -561,7 +561,7 @@
          "name":"roofNFTOverlay",
          "opacity":0.75,
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":74,
          "x":0,
          "y":0

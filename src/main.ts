@@ -4,20 +4,43 @@ import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 
 console.log('Script started successfully');
 
-let currentPopup: any = undefined;
-
 // Waiting for the API to be ready
 WA.onInit().then(() => {
     console.log('Scripting API ready');
     console.log('Player tags: ',WA.player.tags)
 
-    WA.room.onEnterLayer('clockZone').subscribe(() => {
-        const today = new Date();
-        const time = today.getHours() + ":" + today.getMinutes();
-        currentPopup = WA.ui.openPopup("clockPopup","It's " + time,[]);
+    WA.room.onEnterLayer('officeZone').subscribe(() => {
+        WA.room.hideLayer("roofOffice0");
+        WA.room.hideLayer("roofOffice1");
+        WA.room.hideLayer("roofOffice2");
+
+        WA.room.showLayer("roofOfficeOverlay");
+    })      
+
+    WA.room.onLeaveLayer('officeZone').subscribe(() => {
+        WA.room.showLayer("roofOffice0");
+        WA.room.showLayer("roofOffice1");
+        WA.room.showLayer("roofOffice2");
+
+        WA.room.hideLayer("roofOfficeOverlay");
     })
 
-    WA.room.onLeaveLayer('clockZone').subscribe(closePopUp)
+
+    WA.room.onEnterLayer('nftZone').subscribe(() => {
+        WA.room.hideLayer("roofNFT0");
+        WA.room.hideLayer("roofNFT1");
+        WA.room.hideLayer("roofNFT2");
+
+        WA.room.showLayer("roofNFTOverlay");
+    })      
+
+    WA.room.onLeaveLayer('nftZone').subscribe(() => {
+        WA.room.showLayer("roofNFT0");
+        WA.room.showLayer("roofNFT1");
+        WA.room.showLayer("roofNFT2");
+
+        WA.room.hideLayer("roofNFTOverlay");
+    })
 
     // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure
     bootstrapExtra().then(() => {
@@ -26,11 +49,5 @@ WA.onInit().then(() => {
 
 }).catch(e => console.error(e));
 
-function closePopUp(){
-    if (currentPopup !== undefined) {
-        currentPopup.close();
-        currentPopup = undefined;
-    }
-}
 
 export {};

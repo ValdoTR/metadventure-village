@@ -43,7 +43,7 @@ WA.onInit().then(() => {
         }
     ])
     })
-    WA.room.area.onLeave("Llamaverse").subscribe(() => {closePopup(); WA.nav.closeCoWebSite()})
+    WA.room.area.onLeave("NFTFactory").subscribe(() => {closePopup(); WA.nav.closeCoWebSite()})
 
     WA.room.area.onEnter("ComingSoon").subscribe(() => {
         currentPopup = WA.ui.openPopup("ComingSoonPopup", "Coming Soon!", [])

@@ -21,7 +21,7 @@ WA.onInit().then(() => {
             }
         ])
     })
-    WA.room.area.onLeave("Llamaverse").subscribe(() => {closePopup(); WA.nav.closeCoWebSite()})
+    WA.room.area.onLeave("Llamaverse").subscribe(() => {closePopup()})
 
     WA.room.area.onEnter("FestAdventure").subscribe(() => {
         currentPopup = WA.ui.openPopup("FestAdventurePopup", "Visit FestAdventure", [
@@ -32,7 +32,7 @@ WA.onInit().then(() => {
             }
         ])
     })
-    WA.room.area.onLeave("FestAdventure").subscribe(() => {closePopup(); WA.nav.closeCoWebSite()})
+    WA.room.area.onLeave("FestAdventure").subscribe(() => {closePopup()})
 
     WA.room.area.onEnter("NFTFactory").subscribe(() => {
     currentPopup = WA.ui.openPopup("NFTFactoryPopup", "Visit NFT Factory", [
@@ -43,12 +43,27 @@ WA.onInit().then(() => {
         }
     ])
     })
-    WA.room.area.onLeave("NFTFactory").subscribe(() => {closePopup(); WA.nav.closeCoWebSite()})
+    WA.room.area.onLeave("NFTFactory").subscribe(() => {closePopup()})
 
     WA.room.area.onEnter("ComingSoon").subscribe(() => {
         currentPopup = WA.ui.openPopup("ComingSoonPopup", "Coming Soon!", [])
     })
-    WA.room.area.onLeave("ComingSoon").subscribe(() => {closePopup(); WA.nav.closeCoWebSite()})
+    WA.room.area.onLeave("ComingSoon").subscribe(() => {closePopup()})
+
+    WA.room.area.onEnter("exitToWorkAdventure").subscribe(() => {
+        WA.room.showLayer("haloExitWorkAdventure")
+        currentPopup = WA.ui.openPopup("exitToWorkAdventurePopup", "Teleport to WorkAdventure", [
+            {
+                label: 'Whoosh!',
+                className: 'primary',
+                callback: () => WA.nav.goToPage("https://play.staging.workadventu.re/@/tcm/workadventure/wa-village#from-metadventure"),
+            }
+        ])
+    })
+    WA.room.area.onLeave("exitToWorkAdventure").subscribe(() => {
+        closePopup()
+        WA.room.hideLayer("haloExitWorkAdventure")
+    })
 
     // Roofs
     WA.room.area.onEnter("Office").subscribe(() => {

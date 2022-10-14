@@ -34,6 +34,17 @@ WA.onInit().then(() => {
     })
     WA.room.area.onLeave("FestAdventure").subscribe(() => {closePopup(); WA.nav.closeCoWebSite()})
 
+    WA.room.area.onEnter("NFTFactory").subscribe(() => {
+    currentPopup = WA.ui.openPopup("NFTFactoryPopup", "Visit NFT Factory", [
+        {
+            label: 'Teleport',
+            className: 'primary',
+            callback: () => WA.nav.goToRoom("/@/nft-factory#from-metadventure"),
+        }
+    ])
+    })
+    WA.room.area.onLeave("Llamaverse").subscribe(() => {closePopup(); WA.nav.closeCoWebSite()})
+
     WA.room.area.onEnter("ComingSoon").subscribe(() => {
         currentPopup = WA.ui.openPopup("ComingSoonPopup", "Coming Soon!", [])
     })

@@ -65,6 +65,17 @@ WA.onInit().then(() => {
         WA.room.hideLayer("haloExitWorkAdventure")
     })
 
+    WA.room.area.onEnter("exitToFalcon").subscribe(() => {
+        currentPopup = WA.ui.openPopup("exitToFalconPopup", "Fly away with the Millennium Falcon?", [
+            {
+                label: 'Take off',
+                className: 'primary',
+                callback: () => WA.nav.goToRoom("/@/falcon#from-metadventure"),
+            }
+        ])
+    })
+    WA.room.area.onLeave("exitToFalcon").subscribe(closePopup)
+
     // Roofs
     WA.room.area.onEnter("Office").subscribe(() => {
         WA.room.hideLayer("roofOffice0");

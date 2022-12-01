@@ -76,6 +76,17 @@ WA.onInit().then(() => {
     })
     WA.room.area.onLeave("exitToFalcon").subscribe(closePopup)
 
+    WA.room.area.onEnter("exitToPokerverse").subscribe(() => {
+        currentPopup = WA.ui.openPopup("exitToPokerversePopup", "Teleport to the PokerVerse?", [
+            {
+                label: "Let's make some CA$H!",
+                className: 'primary',
+                callback: () => WA.nav.goToRoom("/@/pokerverse"),
+            }
+        ])
+    })
+    WA.room.area.onLeave("exitToPokerverse").subscribe(closePopup)
+
     // Roofs
     WA.room.area.onEnter("Office").subscribe(() => {
         WA.room.hideLayer("roofOffice0");

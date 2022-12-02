@@ -77,14 +77,13 @@ WA.onInit().then(() => {
     WA.room.area.onLeave("exitToFalcon").subscribe(closePopup)
 
     WA.room.area.onEnter("exitToPokerverse").subscribe(() => {
-        /*currentPopup = WA.ui.openPopup("exitToPokerversePopup", "Ready to make history?", [
+        currentPopup = WA.ui.openPopup("exitToPokerversePopup", "Ready to make history?", [
             {
                 label: "Take me to PokerVerse",
                 className: 'primary',
                 callback: () => WA.nav.goToRoom("/@/pokerverse"),
             }
-        ])*/
-        currentPopup = WA.ui.openPopup("exitToPokerversePopup", "Ready to make history? (12.2 - 6pm CET)", [])
+        ])
     })
     WA.room.area.onLeave("exitToPokerverse").subscribe(closePopup)
 
